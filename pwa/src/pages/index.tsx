@@ -1,5 +1,6 @@
 import * as React from "react";
 import Layout from "../components/common/layout";
+import Waardepapieren from "../components/waardepapieren/waardepapieren";
 import { useUrlContext } from "../context/urlContext";
 import { isLoggedIn } from "../services/auth";
 
@@ -9,27 +10,10 @@ const IndexPage = () => {
     <Layout>
       <main>
         <title>Waardepapieren</title>
-        <div className={"text-center"}>
+        <div className={"text-center mt-4"}>
           {isLoggedIn() ? (
             <>
-              <h1 className="utrecht-heading-1 utrecht-heading-1--distanced">
-                Welkom bij Waardepapieren
-              </h1>
-              <h4 className="utrecht-heading-4 utrecht-heading-4--distanced">
-                Met deze applicatie kunt u uw waardepapieren bekijken en
-                aanvragen.
-              </h4>
-              <a
-                className={"utrecht-link mt-4"}
-                href={
-                  context.baseUrl +
-                  "/digid/login?returnUrl=" +
-                  context.frontendUrl +
-                  "/redirect"
-                }
-              >
-                <button className={"utrecht-button"}>Doorgaan</button>
-              </a>
+              <Waardepapieren />
             </>
           ) : (
             <>

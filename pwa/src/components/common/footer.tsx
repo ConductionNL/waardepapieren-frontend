@@ -4,7 +4,7 @@ export default function Footer() {
   return (
     <footer className="utrecht-page-footer">
       <div className="container">
-        <div className="row">
+        <div className="row mb-4">
           <div className="col-12 col-sm-6">
             <h3 className="utrecht-heading-3 utrecht-heading-3--distanced">
               Contact
