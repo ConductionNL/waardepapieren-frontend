@@ -25,7 +25,6 @@ export default function Waardepapieren() {
           credentials: "include",
           headers: {
             "Content-Type": "application/json",
-            Authorization: "Bearer " + sessionStorage.getItem("jwt"),
           },
         }
       )
