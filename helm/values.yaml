@@ -7,16 +7,42 @@ pwa:
     pullPolicy: Always
     # Overrides the image tag whose default is the chart appVersion.
     tag: "dev"
-  apiUrl: "apiURLtest"
-  meUrl: ""
-  baseUrl: ""
-  frontendUrl: ""
-  organization: ""
-  redirectUrl: "vault"
+  apiUrl: "https://acc-waardepapieren.hoorn.nl/api"
+  meUrl: "https://acc-waardepapieren.hoorn.nl/api/users/me"
+  baseUrl: "https://acc-waardepapieren.hoorn.nl/"
+  frontendUrl: "https://acc-waardepapieren.hoorn.nl/"
+  organization: "placeholder"
+  redirectUrl: "null"
+  defaultTheme: "hoorn"
     
 gateway: 
   enabled: true
-  fixtures: {}
+  fixtures:
+    gateways.yaml:
+      App\Entity\Gateway:
+        waardepapieren_service_api:
+          name: service
+          auth: apikey
+          apikey: a78828b4-f577-4425-a17c-c217980409e9
+          location: https://acc-waardepapieren.hoorn.nl/api/v1/waar
+          documentation: https://raw.githubusercontent.com/ConductionNL/waardepapieren-service/master/api/public/schema/openapi.yaml
+        waardepapieren_register_api:
+          name: register
+          auth: apikey
+          apikey: a78828b4-f577-4425-a17c-c217980409e9
+          location: https://acc-waardepapieren.hoorn.nl/api/v1/wari
+          documentation: https://raw.githubusercontent.com/ConductionNL/waardepapieren-register/master/api/public/schema/openapi.yaml
+      App\Entity\Authentication:
+          authentication_1:
+            name: conduction
+            authenticateUrl: https://login.microsoftonline.com/common/oauth2/v2.0/authorize
+            tokenUrl: https://login.microsoftonline.com/common/oauth2/v2.0/token
+            clientId: 85ef6bac-98b4-47fb-ae68-f248b91f6dde
+            secret: 2_sIrT0BXCv..v_nP~UX_tF012RifW5a80
+            scopes:
+              - openid
+              - profile
+
   location: ""
 
 imagePullSecrets: []
@@ -50,9 +76,9 @@ service:
   port: 80
 
 ingress:
-  enabled: false
-  hostname: placeholder
-  path: ''
+  enabled: true
+  hostname: acc-waardepapieren.hoorn.nl
+  path: '/'
   pathType: ImplementationSpecific
   className: nginx
   annotations: {}

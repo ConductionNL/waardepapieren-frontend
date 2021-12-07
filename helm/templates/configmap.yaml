@@ -17,3 +17,4 @@ data:
     window.GATSBY_FRONTEND_URL= "{{ .Values.pwa.frontendUrl }}"
     window.GATSBY_ORGANIZATION= "{{ .Values.pwa.organization }}"
     window.GATSBY_REDIRECT_URL= "{{ .Values.pwa.redirectUrl }}"
+    window.GATSBY_DEFAULT_THEME= "{{ .Values.pwa.defaultTheme }}"

@@ -3,7 +3,7 @@ entries:
   commonground-gateway:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2021-11-12T07:05:18.1965402+01:00"
+    created: "2021-12-07T13:45:47.9648979+01:00"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
@@ -20,10 +20,10 @@ entries:
     urls:
     - charts/commonground-gateway-0.1.2.tgz
     version: 0.1.2
-  nl-design-skeleton-gatsby:
+  waardepapieren-frontend:
   - apiVersion: v2
     appVersion: 0.1.0
-    created: "2021-11-12T07:05:18.1350792+01:00"
+    created: "2021-12-07T13:45:47.9508973+01:00"
     dependencies:
     - alias: gateway
       condition: gateway.enabled
@@ -31,10 +31,10 @@ entries:
       repository: https://raw.githubusercontent.com/ConductionNL/commonground-gateway/master/api/helm/
       version: 0.1.2
     description: Skeleton application for NL Design running on Gatsby
-    digest: 3e948e40e389b8f79c8ec71025624d6bd82c59996afef2ed23b5c6172b960841
-    name: nl-design-skeleton-gatsby
+    digest: f2d1029b417ae04ff0344d1fcee9cfad97899ca21ba0a089e37634ceffaa9adf
+    name: waardepapieren-frontend
     type: application
     urls:
-    - nl-design-skeleton-gatsby-0.1.0.tgz
+    - waardepapieren-frontend-0.1.0.tgz
     version: 0.1.0
-generated: "2021-11-12T07:05:17.9166608+01:00"
+generated: "2021-12-07T13:45:47.9388983+01:00"
