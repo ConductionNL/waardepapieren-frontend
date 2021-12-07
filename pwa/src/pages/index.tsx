@@ -1,11 +1,21 @@
 import * as React from "react";
 import Layout from "../components/common/layout";
 import Waardepapieren from "../components/waardepapieren/waardepapieren";
-import { useUrlContext } from "../context/urlContext";
 import { isLoggedIn } from "../services/auth";
 
 const IndexPage = () => {
-  const context = useUrlContext();
+  React.useEffect(() => {
+    if (typeof window !== "undefined") {
+      setContext({
+        baseUrl: window.GATSBY_BASE_URL,
+        frontendUrl: window.GATSBY_FRONTEND_URL,
+      });
+    }
+  }, []);
+  const [context, setContext] = React.useState({
+    baseUrl: "",
+    frontendUrl: "",
+  });
   return (
     <Layout>
       <main>

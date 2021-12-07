@@ -5,32 +5,38 @@ import {
   SelectInputComponent,
 } from "@conductionnl/nl-design-system";
 import { documentDownload } from "../utility/DocumentDownload";
-import { useUrlContext } from "../../context/urlContext";
 import { getUser, isLoggedIn } from "../../services/auth";
 import { navigate } from "gatsby-link";
 
 export default function Waardepapieren() {
-  const context = useUrlContext();
-
-  const [waardepapieren, setWaardepapieren] = React.useState(null);
+  const [context, setContext] = React.useState(null);
 
   React.useEffect(() => {
-    if (isLoggedIn()) {
-      fetch(
-        `${context.apiUrl}/gateways/register/certificates?person=/ingeschrevenpersonen/900220855&limit=5000&order[dateCreated]=desc`,
-        {
-          credentials: "include",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      )
-        .then((response) => response.json())
-        .then((data) => {
-          setWaardepapieren(data["hydra:member"]);
-        });
+    if (typeof window !== "undefined" && context === null) {
+      setContext({
+        apiUrl: window.GATSBY_API_URL,
+        frontendUrl: window.GATSBY_FRONTEND_URL,
+      });
+    } else {
+      if (isLoggedIn()) {
+        fetch(
+          `${context.apiUrl}/gateways/register/certificates?person=900220855&limit=5000&order[dateCreated]=desc`,
+          {
+            credentials: "include",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        )
+          .then((response) => response.json())
+          .then((data) => {
+            setWaardepapieren(data["hydra:member"]);
+          });
+      }
     }
-  }, []);
+  }, [context]);
+
+  const [waardepapieren, setWaardepapieren] = React.useState(null);
 
   const options = [
     {

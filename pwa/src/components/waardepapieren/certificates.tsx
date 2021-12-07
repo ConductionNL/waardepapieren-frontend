@@ -1,28 +1,33 @@
 import Card from "@conductionnl/nl-design-system/lib/Card/src/card";
 import { Link } from "gatsby";
 import * as React from "react";
-import { useUrlContext } from "../../context/urlContext";
 import { isLoggedIn } from "../../services/auth";
 import { navigate } from "gatsby-link";
 
 export default function Certificates() {
-  const context = useUrlContext();
-  const [payment, setPayment] = React.useState(null);
-  const [loading, setLoading] = React.useState(null);
-
+  const [context, setContext] = React.useState(null);
   React.useEffect(() => {
-    if (isLoggedIn() && typeof window !== "undefined") {
-      const queryString = window.location.search;
+    if (typeof window !== "undefined" && context === null) {
+      setContext({
+        apiUrl: window.GATSBY_API_URL,
+      });
+    } else {
+      if (isLoggedIn() && typeof window !== "undefined") {
+        const queryString = window.location.search;
 
-      if (queryString.length === 0) {
-        setPayment(
-          JSON.parse(window.sessionStorage.getItem("payment") as string)
-        );
-      } else {
-        handlePayment();
+        if (queryString.length === 0) {
+          setPayment(
+            JSON.parse(window.sessionStorage.getItem("payment") as string)
+          );
+        } else {
+          handlePayment();
+        }
       }
     }
-  }, []);
+  }, [context]);
+
+  const [payment, setPayment] = React.useState(null);
+  const [loading, setLoading] = React.useState(null);
 
   const handlePayment = () => {
     setLoading(true);

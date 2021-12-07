@@ -1,5 +1,4 @@
 import * as React from "react";
-import { useUrlContext } from "../../context/urlContext";
 import { getUser, isLoggedIn, logout } from "../../services/auth";
 import { navigate } from "gatsby-link";
 
@@ -9,7 +8,18 @@ export default function MainMenu() {
     navigate("/");
   };
 
-  const context = useUrlContext();
+  React.useEffect(() => {
+    if (typeof window !== "undefined") {
+      setContext({
+        baseUrl: window.GATSBY_BASE_URL,
+        frontendUrl: window.GATSBY_FRONTEND_URL,
+      });
+    }
+  }, []);
+  const [context, setContext] = React.useState({
+    baseUrl: "",
+    frontendUrl: "",
+  });
 
   return (
     <div className="utrecht-navhtml">
