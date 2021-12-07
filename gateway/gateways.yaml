@@ -2,14 +2,14 @@ App\Entity\Gateway:
     waardepapieren_service_api:
         name: service
         auth: apikey
-        apikey: 45c1a4b6-59d3-4a6e-86bf-88a872f35845
-        location: https://waardepapieren.demodam.nl/api/v1/service
+        apikey: a78828b4-f577-4425-a17c-c217980409e9
+        location: https://acc-waardepapieren.hoorn.nl/api/v1/waar
         documentation: https://raw.githubusercontent.com/ConductionNL/waardepapieren-service/master/api/public/schema/openapi.yaml
     waardepapieren_register_api:
         name: register
         auth: apikey
-        apikey: 45c1a4b6-59d3-4a6e-86bf-88a872f35845
-        location: https://waardepapieren.demodam.nl/api/v1/register
+        apikey: a78828b4-f577-4425-a17c-c217980409e9
+        location: https://acc-waardepapieren.hoorn.nl/api/v1/wari
         documentation: https://raw.githubusercontent.com/ConductionNL/waardepapieren-register/master/api/public/schema/openapi.yaml
 App\Entity\Authentication:
     authentication_1:

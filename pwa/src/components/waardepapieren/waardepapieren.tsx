@@ -7,6 +7,7 @@ import {
 import { documentDownload } from "../utility/DocumentDownload";
 import { useUrlContext } from "../../context/urlContext";
 import { getUser, isLoggedIn } from "../../services/auth";
+import { navigate } from "gatsby-link";
 
 export default function Waardepapieren() {
   const context = useUrlContext();
@@ -16,11 +17,7 @@ export default function Waardepapieren() {
   React.useEffect(() => {
     if (isLoggedIn()) {
       fetch(
-        `${
-          context.apiUrl
-        }/gateways/register/certificates?person=/ingeschrevenpersonen/uuid/${
-          getUser().id
-        }`,
+        `${context.apiUrl}/gateways/register/certificates?person=/ingeschrevenpersonen/900220855&limit=5000&order[dateCreated]=desc`,
         {
           credentials: "include",
           headers: {
@@ -30,8 +27,7 @@ export default function Waardepapieren() {
       )
         .then((response) => response.json())
         .then((data) => {
-          console.log(data);
-          //   setWaardepapieren(data["hydra:member"]);
+          setWaardepapieren(data["hydra:member"]);
         });
     }
   }, []);
@@ -50,6 +46,56 @@ export default function Waardepapieren() {
       value: "uitreksel_basis_registratie_personen",
     },
   ];
+
+  const handleCertificate = (event) => {
+    event.preventDefault();
+    const type = event.target.waardepapier.value;
+
+    let price = null;
+
+    switch (type) {
+      case "akte_van_geboorte":
+        price = 1400;
+        break;
+      case "verklaring_van_in_leven_zijn":
+        price = 1400;
+        break;
+      case "uitreksel_basis_registratie_personen":
+        break;
+      default:
+        price = null;
+        break;
+    }
+
+    if (price === null) {
+      return;
+    }
+
+    const body = {
+      organization: "001516814",
+      price: price,
+      type: type,
+      person: "900220855",
+      name: getUser().name,
+      ingenicoUrl: `${context.frontendUrl}/pay-certificate`,
+    };
+
+    fetch(`${context.apiUrl}/gateways/service/payments`, {
+      credentials: "include",
+      method: "POST",
+      body: JSON.stringify(body),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (typeof window !== "undefined") {
+          window.sessionStorage.setItem("payment", JSON.stringify(data));
+          navigate("/pay-certificate");
+        }
+      });
+  };
   return (
     <>
       <div>
@@ -61,7 +107,7 @@ export default function Waardepapieren() {
           cardBody={function () {
             return (
               <>
-                <form className={"mb-4"}>
+                <form onSubmit={handleCertificate} className={"mb-4"}>
                   <div className="row">
                     <div className="col-8">
                       <SelectInputComponent
