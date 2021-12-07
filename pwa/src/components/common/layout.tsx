@@ -14,7 +14,7 @@ export default function Layout({ children }) {
       <Helmet>
         <link
           rel="stylesheet"
-          href={`https://unpkg.com/@conductionnl/${context.defaultTheme}-design-tokens/dist/index.css`}
+          href={`https://unpkg.com/@conductionnl/${context.defaultTheme}-design-tokens@1.0.0-alpha.16/dist/index.css`}
         />
       </Helmet>
       <div className={`utrecht-document ${context.defaultTheme}-theme`}>
