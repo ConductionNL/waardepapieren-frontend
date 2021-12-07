@@ -1,8 +1,8 @@
 import * as React from "react";
-import Layout from "../components/common/layout";
-import Waardepapieren from "../components/waardepapieren/waardepapieren";
-import { useUrlContext } from "../context/urlContext";
-import { isLoggedIn } from "../services/auth";
+import Layout from "../../components/common/layout";
+import Certificates from "../../components/waardepapieren/certificates";
+import { useUrlContext } from "../../context/urlContext";
+import { isLoggedIn } from "../../services/auth";
 
 const IndexPage = () => {
   const context = useUrlContext();
@@ -13,7 +13,7 @@ const IndexPage = () => {
         <div className={"text-center mt-4"}>
           {isLoggedIn() ? (
             <>
-              <Waardepapieren />
+              <Certificates />
             </>
           ) : (
             <>
