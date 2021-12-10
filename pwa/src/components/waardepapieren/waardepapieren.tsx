@@ -20,7 +20,9 @@ export default function Waardepapieren() {
     } else {
       if (isLoggedIn()) {
         fetch(
-          `${context.apiUrl}/gateways/register/certificates?person=900220855&limit=5000&order[dateCreated]=desc`,
+          `${context.apiUrl}/gateways/register/certificates?person=${
+            getUser().id
+          }&limit=5000&order[dateCreated]=desc`,
           {
             credentials: "include",
             headers: {
@@ -81,7 +83,7 @@ export default function Waardepapieren() {
       organization: "001516814",
       price: price,
       type: type,
-      person: "900220855",
+      person: getUser().id,
       name: getUser().name,
       ingenicoUrl: `${context.frontendUrl}/pay-certificate`,
     };
