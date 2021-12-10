@@ -3,7 +3,7 @@ entries:
   commonground-gateway:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2021-12-07T13:45:47.9648979+01:00"
+    created: "2021-12-10T11:53:04.0955479+01:00"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
@@ -14,27 +14,27 @@ entries:
       repository: https://charts.bitnami.com/bitnami
       version: 15.3.2
     description: A Helm chart for Kubernetes
-    digest: 2c2091d5eacc5738a7500dcfc6161cb73005a7479a1c22078c077e30fcf49d1e
+    digest: ac494ba0bdd920f354a3c74bb48e60f4d4f8f40fe86791691de75f41148d6f5d
     name: commonground-gateway
     type: application
     urls:
-    - charts/commonground-gateway-0.1.2.tgz
-    version: 0.1.2
+    - charts/commonground-gateway-0.1.4.tgz
+    version: 0.1.4
   waardepapieren-frontend:
   - apiVersion: v2
     appVersion: 0.1.0
-    created: "2021-12-07T13:45:47.9508973+01:00"
+    created: "2021-12-10T11:53:04.0608473+01:00"
     dependencies:
     - alias: gateway
       condition: gateway.enabled
       name: commonground-gateway
       repository: https://raw.githubusercontent.com/ConductionNL/commonground-gateway/master/api/helm/
-      version: 0.1.2
+      version: 0.1.4
     description: Skeleton application for NL Design running on Gatsby
-    digest: f2d1029b417ae04ff0344d1fcee9cfad97899ca21ba0a089e37634ceffaa9adf
+    digest: a7f93905af425723340f1d083a8d294c29b96bbb5b143022d71bd6f5175be2ca
     name: waardepapieren-frontend
     type: application
     urls:
     - waardepapieren-frontend-0.1.0.tgz
     version: 0.1.0
-generated: "2021-12-07T13:45:47.9388983+01:00"
+generated: "2021-12-10T11:53:04.0373964+01:00"
