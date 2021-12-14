@@ -40,7 +40,7 @@ const IndexPage = () => {
                     context.baseUrl +
                     "/digid/login?returnUrl=" +
                     context.frontendUrl +
-                    "/redirect"
+                    "/handleLogin"
                   }
                 >
                   <button className={"utrecht-button"}>Inloggen</button>

@@ -44,7 +44,7 @@ export default function MainMenu() {
                       context.baseUrl +
                       "/digid/login?returnUrl=" +
                       context.frontendUrl +
-                      "/redirect"
+                      "/handleLogin"
                     }
                   >
                     Inloggen
