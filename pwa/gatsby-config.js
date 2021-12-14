@@ -20,7 +20,8 @@ module.exports = {
           "font-src":
             "'self' https://cdnjs.cloudflare.com/ajax/libs/font-awesome/",
           "connect-src": "'self' http://localhost",
-          "form-action": "'self' https://secure.ogone.com/ncol/test/",
+          "form-action":
+            "'self' https://secure.ogone.com/ncol/test/ https://preprod1.digid.nl/inloggen",
         },
       },
     },
