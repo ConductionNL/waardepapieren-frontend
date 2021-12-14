@@ -20,9 +20,7 @@ export default function Waardepapieren() {
     } else {
       if (isLoggedIn()) {
         fetch(
-          `${context.apiUrl}/gateways/register/certificates?person=${
-            getUser().id
-          }&limit=5000&order[dateCreated]=desc`,
+          `${context.apiUrl}/gateways/register/certificates?limit=5000&order[dateCreated]=desc`,
           {
             credentials: "include",
             headers: {
